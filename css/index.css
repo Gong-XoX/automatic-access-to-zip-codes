@@ -1,0 +1,65 @@
+html,
+p {
+  margin: 0;
+  padding: 0;
+}
+body {
+  width: 258px;
+  margin: 0;
+  font-size: 12px;
+  padding: 20px;
+}
+.title {
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+}
+.title .title-content {
+  font-size: 16px;
+  margin-left: 8px;
+}
+.title img {
+  width: 28px;
+  vertical-align: middle;
+}
+.content input {
+  height: 19px;
+  width: 118px;
+}
+.content select {
+  height: 25px;
+  width: 118px;
+}
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+.clearfix:after {
+  content: '020';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+.clearfix {
+  /* 触发 hasLayout */
+  zoom: 1;
+}
+.tec {
+  text-align: center;
+}
+.mt10 {
+  margin-top: 10px;
+}
+.mb10 {
+  margin-bottom: 10px;
+}
+.ml10 {
+  margin-left: 10px;
+}
+.mr10 {
+  margin-right: 10px;
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>邮编</title>
+    <link rel="stylesheet" href="../css/index.css">
+  </head>
+  <body>
+    <header class="title">
+      <img src="../icons/icon.png" alt="">
+      <span class="title-content">地区邮政编码</span>
+    </header>
+    <div class="content">
+      <div class="mt10 mb10 clearfix">
+        <!-- <input class="address" placeholder="请输入地址"><button class="query-btn ml10">查询</button> -->
+        <select class="address fl">
+          <option disabled selected value>- 请选择地区</option>
+          <option value="China">中国</option>
+          <option value ="UnitedStates">美国</option>
+          <option value ="UnitedKingdom">英国</option>
+          <option value="Japan">日本</option>
+        </select>
+      
+        <input class="zipCode fr" placeholder="查看邮政编码">
+      </div>
+    </div>
+
+    <footer class="tec">
+      © 2021 一个简陋的邮编提示工具 - 扩展
+    </footer>
+
+    <script src="../js/jqery-3.6.0.js"></script>
+    <script src="../js/axios.min.js"></script>
+    <script src='../js/index.js'></script>
+  </body>
+
+</html>
+

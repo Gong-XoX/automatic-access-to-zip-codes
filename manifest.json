@@ -1,0 +1,22 @@
+{
+  "name": "automatic-access-to-zip-codes",
+  "description": "自动获取邮编",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "browser_action": {
+    "default_popup": "pages/index.html",
+    "default_icon": "icons/icon.png"
+  },
+  "permissions": [
+    "storage", "notifications"
+  ],
+  "background": {
+    "persistent": false,
+    "scripts": [
+      "js/background.js"
+    ]
+  },
+  "icons": {
+    "48": "icons/icon.png"
+  }
+}
