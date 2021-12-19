@@ -1,6 +1,6 @@
 {
   "name": "automatic-access-to-zip-codes",
-  "description": "自动获取邮编",
+  "description": "邮编编码查询",
   "version": "0.0.1",
   "manifest_version": 2,
   "browser_action": {
