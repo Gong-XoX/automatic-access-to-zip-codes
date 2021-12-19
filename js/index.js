@@ -19,7 +19,16 @@
   const address = $('.address');
   const zipCode = $('.zipCode');
   const queryBtn = $('.query-btn');
+  address.keyup(function (e) {
+    const key = e.which;
+    if (key === 13) {
+      queryZipCode();
+    }
+  });
   queryBtn.click(async function () {
+    queryZipCode();
+  });
+  async function queryZipCode() {
     const value = address[0].value;
     if (!value) {
       message.run('查询地址不能为空, 请输入', 'warning');
@@ -39,5 +48,5 @@
     } else {
       message.run('查询失败, 请重新填写地址', 'error');
     }
-  });
+  }
 })();
