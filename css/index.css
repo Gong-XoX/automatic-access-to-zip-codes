@@ -24,11 +24,7 @@ body {
 }
 .content input {
   height: 19px;
-  width: 118px;
-}
-.content select {
-  height: 25px;
-  width: 118px;
+  width: 200px;
 }
 .fl {
   float: left;

@@ -1,7 +1,7 @@
 (async () => {
   async function fetch(url, data, methods = 'GET') {
     const baseConfig = {
-      baseURL: 'https://usa.youbianku.com',
+      baseURL: 'http://120.24.46.229:8000/',
       timeout: 10000,
       responseType: 'json',
       // withCredentials: true,
@@ -18,13 +18,26 @@
 
   const address = $('.address');
   const zipCode = $('.zipCode');
-  address[0].value = '';
-  address.change(function (v) {
-    zipCode[0].value = v;
-    // zipCode[0].select(); // 选中
-    // document.execCommand('copy', false); // 复制
-
-    // window.clipboardData.setData('Text', address[0].value);
-    // window.clipboardData.getData('Text');
+  const queryBtn = $('.query-btn');
+  queryBtn.click(async function () {
+    const value = address[0].value;
+    if (!value) {
+      message.run('查询地址不能为空, 请输入', 'warning');
+    }
+    const res = await fetch(`/queryPostCode?address=${value}`);
+    const { code, data } = res;
+    if (code === '000' && data && data.postcode) {
+      const code = data.postcode;
+      let input = document.createElement('input');
+      input.value = code;
+      document.body.appendChild(input);
+      input.select();
+      document.execCommand('copy');
+      document.body.removeChild(input);
+      zipCode[0].value = data.postcode;
+      message.run('已成功复制到剪切板');
+    } else {
+      message.run('查询失败, 请重新填写地址', 'error');
+    }
   });
 })();

@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>邮编</title>
     <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/message.css">
   </head>
   <body>
     <header class="title">
@@ -15,16 +16,8 @@
     </header>
     <div class="content">
       <div class="mt10 mb10 clearfix">
-        <!-- <input class="address" placeholder="请输入地址"><button class="query-btn ml10">查询</button> -->
-        <select class="address fl">
-          <option disabled selected value>- 请选择地区</option>
-          <option value="China">中国</option>
-          <option value ="UnitedStates">美国</option>
-          <option value ="UnitedKingdom">英国</option>
-          <option value="Japan">日本</option>
-        </select>
-      
-        <input class="zipCode fr" placeholder="查看邮政编码">
+        <input class="address fl" placeholder="请输入地址"><button class="query-btn fr">查询</button>
+        <input disabled class="zipCode mt10" placeholder="查看邮政编码">
       </div>
     </div>
 
@@ -34,6 +27,7 @@
 
     <script src="../js/jqery-3.6.0.js"></script>
     <script src="../js/axios.min.js"></script>
+    <script src="../js/message.js"></script>
     <script src='../js/index.js'></script>
   </body>
 
