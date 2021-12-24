@@ -1,7 +1,7 @@
 (async () => {
   // axios请求
   const baseURL = 'http://120.24.46.229:8000/';
-  async function fetch(url, data, methods = 'GET') {
+  async function fetch({ url, data = {}, params = {}, methods = 'GET' }) {
     const baseConfig = {
       baseURL,
       timeout: 10000,
@@ -15,7 +15,7 @@
     };
     let axiosIntance = axios.create(baseConfig);
     axiosIntance.interceptors.response.use((response) => response.data);
-    return await axiosIntance({ url, data, methods });
+    return await axiosIntance({ url, data, params, methods });
   }
   // 防抖
   function debounce(fn, time = 1000) {
@@ -49,7 +49,11 @@
     if (!value) {
       message.run('查询地址不能为空, 请输入', 'warning');
     }
-    const res = await fetch(`/queryPostCode?address=${value}`);
+    const url = '/queryPostCode';
+    const params = {
+      address: value,
+    };
+    const res = await fetch({ url, params });
     const { code, data } = res;
     if (code === '000' && data && data.postcode) {
       const code = data.postcode;
