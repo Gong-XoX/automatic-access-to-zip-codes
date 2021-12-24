@@ -16,6 +16,19 @@
     axiosIntance.interceptors.response.use((response) => response.data);
     return await axiosIntance({ url, data, methods });
   }
+  // 防抖
+  function debounce(fn, time = 1000) {
+    var timerID = null;
+    return function () {
+      var arg = arguments[0]; //获取事件
+      if (timerID) {
+        clearTimeout(timerID);
+      }
+      timerID = setTimeout(function () {
+        fn(arg); //事件传入函数
+      }, time);
+    };
+  }
 
   const address = $('.address');
   const zipCode = $('.zipCode');
@@ -27,9 +40,7 @@
     }
   });
 
-  queryBtn.click(async function () {
-    queryZipCode();
-  });
+  queryBtn.click(debounce(queryZipCode, 500));
 
   async function queryZipCode() {
     const value = address[0].value;
