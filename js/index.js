@@ -41,27 +41,35 @@
       queryZipCode();
     }
   });
+
   // 点击查询事件
-  queryBtn.click(debounce(queryZipCode, 500));
+  queryBtn.click(debounce(queryZipCode, 100));
   // 查询邮政编码
   async function queryZipCode() {
     const value = address[0].value;
     if (!value) {
       message.run('查询地址不能为空, 请输入', 'warning');
+      return;
     }
+    queryBtn[0].disabled = true;
     const url = '/queryPostCode';
     const params = {
       address: value,
     };
-    const res = await fetch({ url, params });
-    const { code, data } = res;
-    if (code === '000' && data && data.postcode) {
-      const code = data.postcode;
-      copy(code);
-      zipCode[0].value = code;
-    } else {
-      message.run('查询失败, 请重新填写地址', 'error');
+    try {
+      const res = await fetch({ url, params });
+      const { code, data } = res || {};
+      if (code === '000' && data && data.postcode) {
+        const code = data.postcode;
+        copy(code);
+        zipCode[0].value = code;
+      } else {
+        message.run('查询失败, 请重新填写地址', 'error');
+      }
+    } catch (e) {
+      message.run(e || '查询失败, 请重新填写地址', 'error');
     }
+    queryBtn[0].disabled = false;
   }
   // 复制剪切板
   function copy(value) {
