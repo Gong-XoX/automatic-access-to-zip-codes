@@ -1,10 +1,12 @@
 /*
- * @Author:
+ * @Author: gong_xox
  * @Date: 2021-12-01 14:53:08
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-12-28 11:27:40
- * @Description:
+ * @LastEditTime: 2021-12-28 14:14:06
+ * @LastEditors: gong_xox
+ * @Description: js操作模块
+ * @FilePath: /automatic-access-to-zip-codes/js/index.js
  */
+
 (async () => {
   // axios请求
   const baseURL = 'http://120.24.46.229:8000/';
