@@ -1,3 +1,10 @@
+/*
+ * @Author:
+ * @Date: 2021-12-01 14:53:08
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-12-28 11:27:40
+ * @Description:
+ */
 (async () => {
   // axios请求
   const baseURL = 'http://120.24.46.229:8000/';
@@ -35,13 +42,14 @@
   const zipCode = $('.zipCode');
   const queryBtn = $('.query-btn');
   // 输入框地址回车事件
-  address.keyup(function (e) {
+  address.keyup(debounce(keyboardEvent, 1000));
+  // 键盘按下事件
+  function keyboardEvent(e) {
     const key = e.which;
     if (key === 13) {
       queryZipCode();
     }
-  });
-
+  }
   // 点击查询事件
   queryBtn.click(debounce(queryZipCode, 100));
   // 查询邮政编码
@@ -51,12 +59,12 @@
       message.run('查询地址不能为空, 请输入', 'warning');
       return;
     }
-    queryBtn[0].disabled = true;
     const url = '/queryPostCode';
     const params = {
       address: value,
     };
     try {
+      queryBtn[0].disabled = true;
       const res = await fetch({ url, params });
       const { code, data } = res || {};
       if (code === '000' && data && data.postcode) {
